@@ -1,4 +1,4 @@
-﻿var di = new MyDiLib();
+﻿var di = new MySimpleDependencyInjectionLib();
 di.Register<ICustomerService, CustomerService>();
 di.Register<ICustomerRepository, CustomerRepository>();
 
@@ -6,16 +6,16 @@ di.Run<Worker>();
 
 class Worker : IStartClass
 {
-    private ServiceDefinitions serviceDefiniations;
+    private ServiceDefinitions? serviceDefinitions;
 
     public void SetContext(ServiceDefinitions serviceDefinitions)
     {
-        this.serviceDefiniations = serviceDefinitions;
+        this.serviceDefinitions = serviceDefinitions;
     }
 
     public void Start()
     {
-        var customerService = serviceDefiniations.Get<ICustomerService, CustomerService>();
+        var customerService = serviceDefinitions!.Get<ICustomerService, CustomerService>();
         customerService.Save();
     }
 }

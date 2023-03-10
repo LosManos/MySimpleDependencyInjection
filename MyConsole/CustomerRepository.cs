@@ -4,7 +4,7 @@
 
 internal class CustomerRepository : ICustomerRepository, IInjectable
 {
-    private ServiceDefinitions serviceDefinitions;
+    private ServiceDefinitions? serviceDefinitions;
 
     public void SetContext(ServiceDefinitions serviceDefinitions)
     {

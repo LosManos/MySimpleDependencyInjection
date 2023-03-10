@@ -4,7 +4,7 @@
 
 internal class CustomerService : ICustomerService, IInjectable
 {
-    private ServiceDefinitions serviceDefinitions;
+    private ServiceDefinitions? serviceDefinitions;
 
     public void SetContext(ServiceDefinitions serviceDefinitions)
     {
@@ -13,7 +13,7 @@ internal class CustomerService : ICustomerService, IInjectable
 
     internal void Save()
     {
-        var repo = serviceDefinitions.Get<ICustomerRepository, CustomerRepository>();
+        var repo = serviceDefinitions!.Get<ICustomerRepository, CustomerRepository>();
         repo.SaveEntity();
     }
 }

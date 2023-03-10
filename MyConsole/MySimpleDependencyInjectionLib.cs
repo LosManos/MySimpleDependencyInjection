@@ -1,4 +1,4 @@
-﻿class MyDiLib
+﻿class MySimpleDependencyInjectionLib
 {
     private ServiceDefinitions services = new ServiceDefinitions();
 
@@ -25,10 +25,10 @@ internal class ServiceDefinitions
         where TClass : class, IInjectable
     {
         services.Add(new ServiceDefinition
-        {
-            TheInterfaceType = typeof(TInterface),
-            TheClassType = typeof(TClass)
-        });
+        (
+            typeof(TInterface),
+            typeof(TClass)
+        ));
     }
 
     internal TClass Get<TInterface, TClass>()
@@ -41,17 +41,18 @@ internal class ServiceDefinitions
         res.SetContext(this);
         return res;
     }
-
-    public override string ToString()
-    {
-        return string.Join(",", services.Select(s => s.ToString()));
-    }
 }
 
-internal class ServiceDefinition
+internal record ServiceDefinition
 {
-    public Type TheInterfaceType { get; internal init; }
-    public Type TheClassType { get; internal set; }
+    public Type TheInterfaceType { get; private init; }
+    public Type TheClassType { get; private init; }
+
+    public ServiceDefinition(Type theInterfaceType, Type theClassType)
+    {
+        TheInterfaceType = theInterfaceType;
+        TheClassType = theClassType;
+    }
 }
 
 internal interface IStartClass
