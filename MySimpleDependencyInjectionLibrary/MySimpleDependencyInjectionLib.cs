@@ -4,7 +4,7 @@
 
     public void Register<TInterface, TClass>()
         where TInterface : class
-        where TClass : class, IInjectable
+        where TClass : class, IInjectionable
     {
         services.Add<TInterface, TClass>();
     }

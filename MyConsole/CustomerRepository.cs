@@ -2,7 +2,7 @@
 {
 }
 
-internal class CustomerRepository : ICustomerRepository, IInjectable
+internal class CustomerRepository : ICustomerRepository, IInjectionable
 {
     private ServiceDefinitions? serviceDefinitions;
 

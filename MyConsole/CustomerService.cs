@@ -2,7 +2,7 @@
 {
 }
 
-internal class CustomerService : ICustomerService, IInjectable
+internal class CustomerService : ICustomerService, IInjectionable
 {
     private ServiceDefinitions? serviceDefinitions;
 

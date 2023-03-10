@@ -1,4 +1,4 @@
-﻿public interface IInjectable
+﻿public interface IInjectionable
 {
     void SetContext(ServiceDefinitions serviceDefinitions);
 }

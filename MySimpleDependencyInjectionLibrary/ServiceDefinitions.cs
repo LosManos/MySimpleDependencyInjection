@@ -4,7 +4,7 @@
 
     internal void Add<TInterface, TClass>()
         where TInterface : class
-        where TClass : class, IInjectable
+        where TClass : class, IInjectionable
     {
         services.Add(new ServiceDefinition
         (
@@ -15,7 +15,7 @@
 
     public TClass Get<TInterface, TClass>()
         where TInterface : class
-        where TClass : class, IInjectable
+        where TClass : class, IInjectionable
     {
         var service = services.SingleOrDefault(s => s.TheInterfaceType == typeof(TInterface))
             ?? throw new Exception($"Interface {typeof(TInterface)} was not found.");
